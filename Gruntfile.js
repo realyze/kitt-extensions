@@ -1,8 +1,8 @@
 module.exports = function(grunt) {
   // PATH where to store unzipped build
-  var BUILD = process.env.KITT_EXT_BUILD_PATH || 'build/';
+  var BUILD = process.env.KITT_EXT_BUILD_PATH || 'build';
   // PATH where to store final zip
-  var DIST = process.env.KITT_EXT_DIST_PATH || 'dist/';
+  var DIST = process.env.KITT_EXT_DIST_PATH || 'dist';
   // Common JS globals
   var globals = {
     'document': false, 'console': false, 'alert': false, 'chrome': false,
@@ -47,7 +47,7 @@ module.exports = function(grunt) {
   }
 
   // Replace build path with extension name
-  BUILD = String.replace(/\{NAME\}/, manifest.name);
+  BUILD = BUILD.replace(/\{NAME\}/, manifest.name);
 
   // --------------------
   // Read default config
@@ -109,11 +109,11 @@ module.exports = function(grunt) {
           steps: {js: ['concat'], css: ['concat']},
           post: []
         },
-        dest: BUILD + config.html_path
+        dest: BUILD + '/' + html
       }
     },
     usemin: {
-      html: BUILD + html
+      html: BUILD + '/' + html
     },
     compress: {
       main: {
