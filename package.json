@@ -1,7 +1,7 @@
 {
-  "name": "Gesture2Location",
+  "name": "Kitt extensions",
   "version": "1.0.0",
-  "author": "Jan D?de?ek",
+  "author": "Jan Dedecek",
   "licenses": [
     {
       "type": "MIT",
@@ -10,6 +10,8 @@
   ],
   "dependencies": {},
   "devDependencies": {
+    "bower": "*",
+    "grunt-cli": "*", 
     "grunt": "*",
     "grunt-contrib-jshint": "*",
     "grunt-exec": "*",
