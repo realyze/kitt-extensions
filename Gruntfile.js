@@ -52,7 +52,8 @@ module.exports = function(grunt) {
   // --------------------
   // Read default config
   var config = grunt.file.readJSON('configure.json');
-  var html = (config.html_path || 'html') + '/**/*.html';
+  var htmlPath = (config.html_path || 'html');
+  var html = htmlPath + '/**/*.html';
   var css = (config.css_path || 'css') + '/**/*.css';
   var js = (config.js_path || 'js') + '/**/*.js';
   if (config.globals) {
@@ -109,7 +110,7 @@ module.exports = function(grunt) {
           steps: {js: ['concat'], css: ['concat']},
           post: []
         },
-        dest: BUILD + '/' + html
+        dest: BUILD + '/' + htmlPath
       }
     },
     usemin: {
