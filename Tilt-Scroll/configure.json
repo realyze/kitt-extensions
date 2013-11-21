@@ -1,0 +1,6 @@
+{
+    "js_path": "js/",
+    "css_path" : "css/",
+    "html_path" : "html/",
+    "globals" : {"$": false}    
+}
