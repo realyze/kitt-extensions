@@ -1,7 +1,16 @@
 $(document).ready(function() {
   try {
+    
+    function getMessiWidth() {
+      return $(document).width() - 50 + 'px';
+    }
+    
     // Default style for message boxes.
-    var MESSI_STYLE = {modal: true, width: $(document).width() - 50 + 'px', title: 'Choose action:'};
+    var MESSI_STYLE = {modal: true, width: getMessiWidth(), title: 'Choose action:'};
+    var THUMBNAIL_WIDTH = 71;
+    var THUMBNAIL_HEIGHT = 71;
+    var THUMBNAIL_PADDING = 2;
+    var BODY_PADDING = 5; // px
 
     var Templates = {};
     var dollarRec = new Dollar.Recognizer();
@@ -36,19 +45,17 @@ $(document).ready(function() {
         max.Y = Math.max(max.Y, e.Y);
       });
 
-      var internalBorderWidth = 2;
-
-      var dx = 1.0 * (canvas.width - internalBorderWidth * 2) / (max.X - min.X);
-      var dy = 1.0 * (canvas.height - internalBorderWidth * 2) / (max.Y - min.Y);
+      var dx = 1.0 * (canvas.width - THUMBNAIL_PADDING * 2) / (max.X - min.X);
+      var dy = 1.0 * (canvas.height - THUMBNAIL_PADDING * 2) / (max.Y - min.Y);
 
       ctx.strokeStyle = 'black';
       ctx.beginPath();
-      ctx.moveTo((points[0].X - min.X) * dx + internalBorderWidth,
-              (points[0].Y - min.Y) * dy + internalBorderWidth);
+      ctx.moveTo((points[0].X - min.X) * dx + THUMBNAIL_PADDING,
+              (points[0].Y - min.Y) * dy + THUMBNAIL_PADDING);
 
       for (var index = 1; index < points.length; index++) {
-        ctx.lineTo((points[index].X - min.X) * dx + internalBorderWidth,
-                (points[index].Y - min.Y) * dy + internalBorderWidth);
+        ctx.lineTo((points[index].X - min.X) * dx + THUMBNAIL_PADDING,
+                (points[index].Y - min.Y) * dy + THUMBNAIL_PADDING);
       }
       ctx.stroke();
     }
@@ -261,6 +268,23 @@ $(document).ready(function() {
       }
     });
 
+    // Resize main canvas
+    function canvasResize() {
+      var p = $('#content1').offset();
+      document.getElementById('surface').width = $('body').width() - BODY_PADDING - p.left;
+      document.getElementById('surface').height = $('body').height() - BODY_PADDING - p.top;
+    }
+    
+    // Register on orientation change event
+    window.addEventListener("orientationchange", function() {
+      // Force to redraw the document
+      $(document).hide().show();
+      // Set messi style
+      MESSI_STYLE.width = getMessiWidth();
+      // Resize canvas
+      canvasResize();
+    });
+
     // Display content from Draw Gesture
     $('#button1').click(function() {
 
@@ -270,9 +294,7 @@ $(document).ready(function() {
       $('.content').hide();
       $('#content1').show();
       // -----
-      // Equal width and height.
-      document.getElementById('surface').width = $('#content1').width();
-      document.getElementById('surface').height = $('#content1').width();
+      canvasResize();
     });
 
     // Display content for List Gestures
@@ -303,8 +325,8 @@ $(document).ready(function() {
 
         var canvas = document.createElement('canvas');
         cell.appendChild(canvas);
-        canvas.width = 71;
-        canvas.height = 71;
+        canvas.width = THUMBNAIL_WIDTH;
+        canvas.height = THUMBNAIL_HEIGHT;
         canvas.style.border = 'solid 2px white';
         drawGesture(canvas, Templates[template.Name]);
 
