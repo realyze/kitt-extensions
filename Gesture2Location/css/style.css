@@ -20,12 +20,18 @@ canvas {
     padding: 10px;
     vertical-align: middle;
 }
+html, body {
+    height: 100%;
+    width: 100%;
+    margin: 0px;
+    padding: 0px;
+}
 body {
-    width: -webkit-fit-content;
     background-color: #e6e6e6;
 }
 .content  {
     background-color: white;
+    overflow: hidden;
 }
 .text {
     white-space: pre-wrap;
