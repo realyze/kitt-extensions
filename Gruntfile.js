@@ -41,8 +41,8 @@ module.exports = function(grunt) {
 
   var contentScripts = [];
   if (manifest.content_scripts) {
-    manifest.content_scripts.forEach(function(c) {
-      contentScripts = contentScripts.concat(c.js || []);
+    manifest.content_scripts.forEach(function(content) {
+      contentScripts = contentScripts.concat(content.js || []);
     });
   }
 
