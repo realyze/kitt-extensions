@@ -1,12 +1,12 @@
 $(document).ready(function() {
   try {
-    
-    function getMessiWidth() {
+
+    function calculateWidthOfMessiPopup() {
       return $(document).width() - 50 + 'px';
     }
-    
+
     // Default style for message boxes.
-    var MESSI_STYLE = {modal: true, width: getMessiWidth(), title: 'Choose action:'};
+    var MESSI_STYLE = {modal: true, width: calculateWidthOfMessiPopup(), title: 'Choose action:'};
     var THUMBNAIL_WIDTH = 71;
     var THUMBNAIL_HEIGHT = 71;
     var THUMBNAIL_PADDING = 2;
@@ -274,13 +274,13 @@ $(document).ready(function() {
       document.getElementById('surface').width = $('body').width() - BODY_PADDING - p.left;
       document.getElementById('surface').height = $('body').height() - BODY_PADDING - p.top;
     }
-    
+
     // Register on orientation change event
     window.addEventListener("orientationchange", function() {
       // Force to redraw the document
       $(document).hide().show();
       // Set messi style
-      MESSI_STYLE.width = getMessiWidth();
+      MESSI_STYLE.width = calculateWidthOfMessiPopup();
       // Resize canvas
       canvasResize();
     });
