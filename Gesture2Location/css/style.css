@@ -1,0 +1,38 @@
+#items {
+    display: table;
+    min-width: 250px;
+    width: 100%;
+    border-top: 1px solid black;
+}
+#items>div {
+    display: table-row;
+}
+#items>div>div {
+    display: table-cell;
+    vertical-align: middle;
+    border-bottom: 1px solid black;
+}
+canvas {
+    vertical-align: middle;
+}
+#items img {
+    max-height:  75px;
+    padding: 10px;
+    vertical-align: middle;
+}
+html, body {
+    height: 100%;
+    width: 100%;
+    margin: 0px;
+    padding: 0px;
+}
+body {
+    background-color: #e6e6e6;
+}
+.content  {
+    background-color: white;
+    overflow: hidden;
+}
+.text {
+    white-space: pre-wrap;
+}

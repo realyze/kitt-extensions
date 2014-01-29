@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+        <title>Gestures</title>
+        <link rel="stylesheet" href="../css/button.css"/>
+        <link rel="stylesheet" href="../css/style.css"/>
+        <!-- build:css ../css/messi.min.css -->
+        <link rel="stylesheet" href="../bower_components/messi/messi.min.css"/>
+        <!-- endbuild -->
+        <!-- build:js ../js/jquery.min.js -->
+        <script type="text/javascript" src="../bower_components/jquery/jquery.min.js"></script>
+        <!-- endbuild -->
+        <!-- build:js ../js/jquery.touchSwipe.min.js -->
+        <script type="text/javascript" src='../bower_components/jquery-touchswipe/jquery.touchSwipe.min.js'></script>
+        <!-- endbuild -->
+        <!-- build:js ../js/messi.min.js -->
+        <script type="text/javascript" src='../bower_components/messi/messi.min.js'></script>
+        <!-- endbuild -->
+        <!-- build:js ../js/URI.min.js -->
+        <script type="text/javascript" src="../bower_components/uri.js/src/URI.min.js"></script>
+        <!-- endbuild -->
+        <!-- build:js ../js/Dollar.js -->
+        <script type="text/javascript" src='../js/Dollar.js'></script>
+        <!-- endbuild -->
+        <!-- build:js ../js/popup.js -->
+        <script type="text/javascript" src="../js/popup.js"></script>
+        <!-- endbuild -->
+    </head>
+    <body style="max-width: 100%;">
+        <div style="padding: 5px;">
+            <div style="display: table; width: 100%;">
+                <div style="display: table-row">
+                    <div style='display: table-cell;' class='button' id='button1'>Draw gesture</div>
+                    <div style='display: table-cell;' class='button' id='button2'>List gestures</div>
+                </div>
+            </div>
+            <div class='content' id='content1' style="display: none">
+                <canvas id='surface'></canvas>
+            </div>
+            <div class='content' id='content2' style="display: none">
+            </div>
+        </div>
+    </body>
+</html>
