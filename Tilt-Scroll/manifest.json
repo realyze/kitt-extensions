@@ -2,7 +2,7 @@
     "manifest_version": 2,
     "name": "Tilt-Scroll",
     "description": "Tilt scroller is demo extension for Kitt. The purpose of this extension is to allow scroll current page only by rotation of mobile phone.",
-    "version": "1.2.8",
+    "version": "1.2.9",
     "icons": {
         "128": "images/icon.jpg"
     },

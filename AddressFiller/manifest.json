@@ -2,7 +2,7 @@
   "manifest_version": 2,
   "name": "AddressFiller",
   "author": "Jan Dědeček",
-  "version": "1.3.5",
+  "version": "1.3.7",
   "description": "Address filler is demo extension for Kitt. Its purpose is to allow user to fill address fields of current page by his actual location. The actual location is retrieved by a GPS module of user's phone.",
   "icons": {
     "50": "images/icon.gif"
