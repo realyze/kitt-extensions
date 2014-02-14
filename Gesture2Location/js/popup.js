@@ -3,9 +3,9 @@ var localJQuery = $.noConflict(true);
   $(document).ready(function() {
     try {
   
-      function calculateWidthOfMessiPopup() {
+      var calculateWidthOfMessiPopup = function() {
         return $(document).width() - 50 + 'px';
-      }
+      };
   
       // Default style for message boxes.
       var MESSI_STYLE = {modal: true, width: calculateWidthOfMessiPopup(), title: 'Choose action:'};
@@ -35,7 +35,7 @@ var localJQuery = $.noConflict(true);
        * @param {Canvas} canvas
        * @param {Array} points
        */
-      function drawGesture(canvas, points) {
+      var drawGesture = function (canvas, points) {
         var ctx = canvas.getContext('2d');
   
         var min = {X: points[0].X, Y: points[0].Y}, max = {X: points[0].X, Y: points[0].Y};
@@ -60,13 +60,13 @@ var localJQuery = $.noConflict(true);
                   (points[index].Y - min.Y) * dy + THUMBNAIL_PADDING);
         }
         ctx.stroke();
-      }
+      };
   
       /**
        * Calls callback with active tab.
        * @param {Callback} callback
        */
-      function getActiveTab(callback) {
+      var getActiveTab = function (callback) {
         chrome.tabs.query({}, function(tabs) {
           for (var index = 0; index < tabs.length; index++) {
             if (tabs[index].active) {
@@ -76,23 +76,23 @@ var localJQuery = $.noConflict(true);
             }
           }
         });
-      }
+      };
   
       /**
        * Add new gesture to templates storage.
        * @param {String} name
        * @param {Array} points
        */
-      function addTemplate(name, points) {
+      var addTemplate = function (name, points) {
         Templates[name] = points;
         dollarRec.AddTemplate(name, points);
-      }
+      };
   
       /**
        * Remove gesture from template storage.
        * @param {String} name
        */
-      function removeTemplate(name) {
+      var removeTemplate = function (name) {
         // Remove from templates
         delete Templates[name];
         // Remove from Dollar
@@ -102,14 +102,14 @@ var localJQuery = $.noConflict(true);
             break;
           }
         }
-      }
+      };
   
       /**
        * Process drawn gesture and displays dialog to make user choose action.
        * @param {Array} points
        * @returns {undefined}
        */
-      function handleGesture(points) {
+      var handleGesture = function (points) {
         getActiveTab(function(tab) {
           try {
             var result = {Score: 0};
@@ -202,14 +202,14 @@ var localJQuery = $.noConflict(true);
             alert(e);
           }
         });
-      }
+      };
   
       /**
        * Remove gesture from list and also from storage.
        * @param {String} id
        * @param {String} name
        */
-      function removeGesture(id, name) {
+      var removeGesture = function (id, name) {
         var options = {};
         $.extend(options, MESSI_STYLE, {
           buttons: [{id: 0, label: 'Yes', val: 'y', class: 'btn-success'},
@@ -228,7 +228,7 @@ var localJQuery = $.noConflict(true);
         };
         // Display question dialog
         new Messi(message, options);
-      }
+      };
   
       var point, Points = [];
   
@@ -271,11 +271,11 @@ var localJQuery = $.noConflict(true);
       });
   
       // Resize main canvas
-      function canvasResize() {
+      var canvasResize = function () {
         var p = $('#content1').offset();
         document.getElementById('surface').width = $('body').width() - BODY_PADDING - p.left;
         document.getElementById('surface').height = $('body').height() - BODY_PADDING - p.top;
-      }
+      };
   
       // Register on orientation change event
       window.addEventListener("orientationchange", function() {
