@@ -11,7 +11,7 @@
   "dependencies": {},
   "devDependencies": {
     "bower": "*",
-    "grunt": "*",
+    "grunt": "~0.4.2",
     "grunt-cli": "*",
     "grunt-contrib-jshint": "*",
     "grunt-exec": "*",
@@ -19,6 +19,6 @@
     "grunt-contrib-copy": "*",
     "grunt-contrib-concat": "*",
     "grunt-bumpup": "*",
-    "grunt-contrib-compress": "*"
+    "grunt-crx": "~0.3.3"
   }
 }

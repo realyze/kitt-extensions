@@ -1,0 +1,1 @@
+{"explanation":"The extension doesn't need package because it's not a nodejs app, but grunt-crx refuses to continue without it"}

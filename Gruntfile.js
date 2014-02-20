@@ -17,7 +17,7 @@ module.exports = function(grunt) {
   grunt.loadNpmTasks('grunt-exec');
   grunt.loadNpmTasks('grunt-usemin');
   grunt.loadNpmTasks('grunt-bumpup');
-  grunt.loadNpmTasks('grunt-contrib-compress');
+  grunt.loadNpmTasks('grunt-crx');
 
   // Set working path
   var path = grunt.option('path') || '.';
@@ -116,15 +116,13 @@ module.exports = function(grunt) {
     usemin: {
       html: BUILD + '/' + html
     },
-    compress: {
+    crx: {
       main: {
-        options: {
-          mode: 'zip',
-          archive: DIST + '/' + manifest.name + '.zip'
-        },
-        files: [
-          {src: ['**'], dest: '.', expand: true, cwd: BUILD}
-        ]
+        src: [BUILD+'/**'],
+        dest: DIST,
+        filename: manifest.name+'.crx',
+        baseURL: 'http://localhost:8777/', // clueless default
+        privateKey: BUILD+'/../../key.pem'
       }
     }
   });
@@ -137,5 +135,5 @@ module.exports = function(grunt) {
     grunt.registerTask('_usemin', ['useminPrepare', 'concat', 'usemin']);
   }
 
-  grunt.registerTask('default', ['jshint', 'bumpup', 'exec:bower', 'copy', '_usemin', 'compress']);
+  grunt.registerTask('default', ['jshint', 'bumpup', 'exec:bower', 'copy', '_usemin', 'crx']);
 };
