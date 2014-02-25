@@ -17,8 +17,6 @@ var localJQuery = $.noConflict(true);
     var MOTION_LENGTH = MIN_MOTION_THRESHOLD - MAX_MOTION_THRESHOLD;
     var MOTION_SPEED = 50;
 
-    // Has the user clicked on lock button?
-    var lock = false;
     var interval;
 
     // Base coordinate system
@@ -118,7 +116,7 @@ var localJQuery = $.noConflict(true);
     });
 
 
-    function browserActionOnClick() {
+    function browserActionOnClick(lock) {
         if (lock) {
             // Disable timer
             window.clearInterval(interval);
@@ -141,7 +139,6 @@ var localJQuery = $.noConflict(true);
             for (var j = 0; j < 3; j++)
                 base[i][j] = current[i][j];
 
-        lock = !lock;
     }
 
     chrome.runtime.onMessage.addListener(function(request, sender, sendResponse)
@@ -150,7 +147,7 @@ var localJQuery = $.noConflict(true);
         {
             // Received on click event
             case 'content.onClick':
-                browserActionOnClick();
+                browserActionOnClick(request.lock);
                 sendResponse({message: 'OK'});
                 break;
             default:
