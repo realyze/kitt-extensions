@@ -1,4 +1,5 @@
-(function() {
+var localJQuery = $.noConflict(true);
+(function($) {
 
   /**
    * Tries to gather images from page.
@@ -64,4 +65,4 @@
     }
   });
 
-})();
+})(localJQuery);

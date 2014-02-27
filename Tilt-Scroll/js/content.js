@@ -1,4 +1,5 @@
-(function() {
+var localJQuery = $.noConflict(true);
+(function($) {
     // The rotation of mobile phone is represented by three angles.
     // For convinience, I use coordinate system instead of rotation angles.
     // In theory, Y axis should be orthogonal on plane of mobile screen.
@@ -157,4 +158,4 @@
                 break;
         }
     });
-})();
+})(localJQuery);
